@@ -46,6 +46,14 @@ public class Estudante {
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
+
+	public Professore getProfessore() {
+		return professore;
+	}
+
+	public void setProfessore(Professore professore) {
+		this.professore = professore;
+	}
 	
 	
 
