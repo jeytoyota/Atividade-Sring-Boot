@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Estudante {
@@ -15,6 +18,10 @@ public class Estudante {
 	private String nome;
 	
 	private int idade;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("estudante")
+	private Professore professore;
 
 	public long getId() {
 		return id;
