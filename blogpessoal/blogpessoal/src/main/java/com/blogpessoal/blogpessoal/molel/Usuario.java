@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -16,17 +16,42 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull
-	@Size(min = 2, max= 100)
+	@NotEmpty(message="O Nome deve ser preenchido")
 	private String nome;
 	
-	@NotNull
-	@Size(min = 5, max= 100)
+	@NotEmpty(message="O usuario deve ser preenchido")
 	private String usuario;
 	
-	@NotNull
-	@Size(min = 5, max= 100)
+	@NotEmpty(message="A senha deve ser preenchida")
 	private String senha;
+	
+
+	public Usuario(long id, @NotEmpty(message = "O Nome deve ser preenchido") String nome,
+			@NotEmpty(message = "O usuario deve ser preenchido") String usuario,
+			@NotEmpty(message = "A senha deve ser preenchida") String senha) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+	}
+	
+	
+	public Usuario(@NotEmpty(message = "O Nome deve ser preenchido") String nome,
+			@NotEmpty(message = "O usuario deve ser preenchido") String usuario,
+			@NotEmpty(message = "A senha deve ser preenchida") String senha) {
+		super();
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+	}
+
+
+
+	public Usuario() {
+		
+	}
+
 
 	public long getId() {
 		return id;
